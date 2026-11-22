@@ -34,5 +34,3 @@ explains how a repository extends it.
 - Conventional commits: `<type>(<scope>): <summary>`. The scope is the file
   or area changed: `settings`, `labels`, `pre-commit`, `dependabot`,
   `agents` for this file, or `readme`.
-- `LICENSE.md` is the FSF's text, byte for byte. Never edit it or reproduce it
-  from memory.
