@@ -15,9 +15,16 @@
 # repository: no name, description, homepage, topics, private, visibility,
 # archived, is_template or default_branch (a new repository has no branches
 # yet, and private: false would publish every private one). The
-# repository-identity hook in .pre-commit-config.yaml refuses them. This
-# repository's own description and topics are therefore set by hand, with
-# `gh repo edit`.
+# repository-identity hook in .pre-commit-config.yaml refuses them.
+#
+# That is why this repository's own description and topics are set by hand,
+# with `gh repo edit`, instead of here, where every new repository would be
+# stamped with them too. They were set on 2026-11-21 to:
+#   description: Shared GitHub defaults for regulad's repositories, which each
+#                one's .github/settings.yml extends
+#   topics: configuration, github, probot, probot-settings,
+#           repository-settings
+# Change them with `gh repo edit` and update this record in the same commit.
 #
 # A change here reaches a repository that extends it only when that
 # repository syncs again: a push to its default branch that touches its own
