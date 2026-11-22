@@ -1,0 +1,30 @@
+# pre-commit (https://pre-commit.com) hooks. They run on every commit once
+# installed (`pre-commit install`, or globally through an init template);
+# `pre-commit run --all-files` runs them on the whole tree.
+#
+# The licence text stays exactly as published.
+exclude: '^LICENSE\.md$'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      # .github/settings.yml is applied as it is to every repository created
+      # without a settings file of its own, so it must not carry a
+      # repository's identity or its environments (see the file's header).
+      # Matches the keys at `repository:`'s two-space indent only, so the
+      # labels' `- name:` and `description:` entries pass.
+      - id: repository-identity
+        name: no repository identity or environments in the shared settings
+        language: pygrep
+        entry: '^(  (name|description|homepage|topics|private|visibility|archived|is_template|default_branch)|environments):'
+        files: '^\.github/settings\.yml$'

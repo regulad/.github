@@ -1,0 +1,87 @@
+# The defaults every one of regulad's repositories shares, for the Probot
+# Settings app (https://github.com/repository-settings/app). It reaches a
+# repository in two ways:
+#
+# * A repository's own .github/settings.yml starts with `_extends: .github`
+#   and then sets only what is its own: name, description, homepage, topics,
+#   private, default_branch, and anything it does differently from here. Its
+#   values win key by key; `labels` and `branches` entries merge with these by
+#   `name`, and a label listed in neither file is deleted.
+# * A repository created without a settings file of its own gets this file
+#   as it is, at creation: the app syncs every new repository, and Probot
+#   reads the owner's .github repository when the new one has no file.
+#
+# The second is why nothing here may name, describe, publish or hide a
+# repository: no name, description, homepage, topics, private, visibility,
+# archived, is_template or default_branch (a new repository has no branches
+# yet, and private: false would publish every private one). The
+# repository-identity hook in .pre-commit-config.yaml refuses them. This
+# repository's own description and topics are therefore set by hand, with
+# `gh repo edit`.
+#
+# A change here reaches a repository that extends it only when that
+# repository syncs again: a push to its default branch that touches its own
+# .github/settings.yml, or a change of its default branch.
+repository:
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: true
+  has_discussions: false
+
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
+  allow_auto_merge: false
+  delete_branch_on_merge: true
+
+  allow_update_branch: true
+
+  squash_merge_commit_title: PR_TITLE
+  squash_merge_commit_message: PR_BODY
+
+  # Dependabot alerts, and its pull requests that fix them. Routine version
+  # updates are each repository's own .github/dependabot.yml.
+  enable_vulnerability_alerts: true
+  enable_automated_security_fixes: true
+
+# The labels every repository has. `color` is a hex string without the
+# leading `#`. A repository adds its own, or rewords one of these, by listing
+# it under the same `name`.
+labels:
+  - name: bug
+    color: "d73a4a"
+    description: Something isn't working as expected
+  - name: enhancement
+    color: "a2eeef"
+    description: New feature or capability
+  # No `research` label: an issue or PR either asks for something actionable
+  # or writes findings up as documentation (`documentation`). Captures and
+  # dumps are added only together with the write-up of what they show.
+  - name: documentation
+    color: "0075ca"
+    description: Improvements or additions to documentation
+  - name: infra
+    color: "fbca04"
+    description: Build, CI, packaging, or deployment work
+  - name: question
+    color: "d876e3"
+    description: Further information is requested
+  - name: wontfix
+    color: "ffffff"
+    description: This will not be worked on
+  - name: duplicate
+    color: "cfd3d7"
+    description: This issue or PR already exists
+  # Dependabot's, which each repository's .github/dependabot.yml applies.
+  - name: dependencies
+    color: "0366d6"
+    description: Pull requests that update a dependency file
+
+# No `environments` key, here or in a repository that extends this file:
+# deployment environments and their secrets are regulad/homelab's
+# (tofu/github), and the app deletes every environment its file doesn't list.
+# Without the key it never touches them.
+
+# No `branches` key: repositories are solo-maintained and take direct pushes
+# to their default branch. One that needs protection lists it in its own file.
