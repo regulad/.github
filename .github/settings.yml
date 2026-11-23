@@ -26,6 +26,13 @@
 #           repository-settings
 # Change them with `gh repo edit` and update this record in the same commit.
 #
+# Every repository's default branch is master. The key can't be here, for the
+# reason above, so the default is set where a new repository's first branch
+# gets its name: Parker's GitHub account ("Repository default branch" at
+# github.com/settings/repositories, set to master by hand on 2026-11-22) and
+# git's init.defaultBranch in regulad/dotfiles. Each repository's own file
+# still names its branch, as README.md's example does.
+#
 # A change here reaches a repository that extends it only when that
 # repository syncs again: a push to its default branch that touches its own
 # .github/settings.yml, or a change of its default branch.

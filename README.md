@@ -32,6 +32,11 @@ under a new name is added. Any label listed in neither file is deleted.
 A repository created without a settings file gets the shared file as it is,
 so the shared file never names, describes, publishes or hides a repository.
 
+New repositories use `master`. The shared file can't set it, since a new
+repository has no branches yet: Parker's GitHub account default and git's
+`init.defaultBranch` (in regulad/dotfiles) name the first branch `master`, and
+each repository's own file names it, as in the example above.
+
 A change to the shared file reaches a repository only when that repository's
 own settings file is next pushed to its default branch.
 
