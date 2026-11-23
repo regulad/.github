@@ -1,9 +1,21 @@
 # Agent notes for `regulad/.github`
 
-This repository holds the GitHub defaults shared by regulad's repositories.
-Today that is the Settings app's base file, `.github/settings.yml`, which
-other repositories inherit with `_extends: .github`. [README.md](README.md)
-explains how a repository extends it.
+This repository holds the GitHub defaults shared by regulad's repositories:
+the Settings app's base file, `.github/settings.yml`, which other
+repositories inherit with `_extends: .github`, and the default issue forms
+in `.github/ISSUE_TEMPLATE/`. [README.md](README.md) explains how each
+reaches a repository.
+
+## The issue forms
+
+- GitHub offers `.github/ISSUE_TEMPLATE/` in every regulad repository that
+  has no `ISSUE_TEMPLATE` folder of its own. A repository with its own
+  folder gets none of these, so a form only some repositories need belongs
+  in theirs, as Blackb0x--'s does with its device fields.
+- A form's `labels` must exist in each repository that uses it. `bug` and
+  `enhancement` come from the shared settings file's standard labels.
+- Every form keeps the AI use fields, and `config.yml` keeps blank issues
+  off so they can't be skipped.
 
 ## The shared settings file
 

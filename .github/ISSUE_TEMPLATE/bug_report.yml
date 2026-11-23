@@ -1,0 +1,91 @@
+name: Bug report
+description: Something doesn't work as it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Bugs can only be fixed with precise details, so please fill in every field you can.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched existing issues and this isn't a duplicate.
+          required: true
+        - label: I followed the README's requirements and setup steps.
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What went wrong, and what you expected to happen instead.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: The release you used, or the output of `git rev-parse HEAD` in the checkout you built.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your operating system and its version, the hardware if it matters, and the versions of anything else involved.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands or actions, in order, with any flags. Say whether it happens every time.
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Full output
+      description: Paste the whole output or log as text, not just the last few lines. **Screenshots of text are not accepted**; they can't be searched or quoted, and issues that only have one will be asked for the text. This field is already rendered as a ``` code block, so don't add backticks. Remove anything private, if you prefer.
+      render: shell
+
+  - type: dropdown
+    id: ai-use
+    attributes:
+      label: AI use disclosure
+      description: Did you use AI tools for this report, or for the diagnosis or code it's about? Using AI is allowed. Not disclosing it isn't.
+      options:
+        - No AI used
+        - AI assisted (I wrote it, AI helped with parts)
+        - Mostly AI-generated
+    validations:
+      required: true
+
+  - type: textarea
+    id: ai-details
+    attributes:
+      label: AI use details
+      description: Which tool(s), and what each one did, e.g. wrote this text, suggested the cause, wrote a patch, or explained the logs. If you used none, write "None".
+      placeholder: e.g. "Claude Code read the logs and suggested the cause. I wrote the report myself."
+    validations:
+      required: true
+
+  - type: textarea
+    id: unsure
+    attributes:
+      label: Things I'm unsure of / haven't verified
+      description: |
+        List anything in this report you're guessing at, didn't check yourself, or got from an AI without verifying, such as a suspected cause, the exact version, or whether it happens every time.
+        If there's genuinely nothing, write "nothing". That's a fine answer. Please don't guess to fill this in. "I haven't checked X" is more useful than a confident guess.
+    validations:
+      required: true

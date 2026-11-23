@@ -43,6 +43,14 @@ own settings file is next pushed to its default branch.
 Environments and secrets aren't set here or in any repository's settings file.
 [regulad/homelab](https://github.com/regulad/homelab) manages them.
 
+## Issue forms
+
+[`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE) holds the bug report and
+feature request forms. GitHub offers them in every repository that has no
+`.github/ISSUE_TEMPLATE` folder of its own; a repository with its own folder
+gets none of these. Both forms ask whether AI was used, and blank issues are
+off, so that question can't be skipped.
+
 ## Licence
 
 Free software, under the GNU Affero General Public License, version 3 or (at
